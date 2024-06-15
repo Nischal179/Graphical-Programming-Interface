@@ -1,0 +1,551 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Assignment1</name>
+    </assembly>
+    <members>
+        <member name="T:Assignment1.Circle">
+            <summary>
+            Circle class inherits Shape which is an abstract class
+            </summary>
+        </member>
+        <member name="M:Assignment1.Circle.#ctor">
+            <summary>
+            Default constructor of the Circle class calls the default constructor of it's base class i.e.
+            Shape
+            </summary>
+        </member>
+        <member name="M:Assignment1.Circle.set(System.Drawing.Color,System.String,System.Boolean,System.Boolean,System.Int32[])">
+            <summary>
+            It sets pen color fill status and cursor position as well as radius of the circle 
+            </summary>
+            <param name="colour"></param>
+            <param name="flashcolor"></param>
+            <param name="fill"></param>
+            <param name="flash"></param>
+            <param name="list"></param>
+        </member>
+        <member name="M:Assignment1.Circle.draw(System.Drawing.Graphics)">
+            <summary>
+            It draws the circle based on it's fill status, radius, pen color and cursor's position
+            </summary>
+            <param name="g"></param>
+        </member>
+        <member name="M:Assignment1.Circle.Flashing(System.Drawing.Graphics)">
+            <summary>
+            This method is used to create a new thread for flashing. It takes an object of the Graphics class as input.
+            It creates a new thread and starts it based on the value of 'flashcolor' variable.
+            The thread runs the 'StartFlashing' method and passes the Graphics object and two colors as input.
+            If the 'flashcolor' variable is "redgreen", the thread runs the 'StartFlashing' method with Color.Red and Color.Green as input.
+            If the 'flashcolor' variable is "blueyellow", the thread runs the 'StartFlashing' method with Color.Blue and Color.Yellow as input.
+            If the 'flashcolor' variable is "blackwhite", the thread runs the 'StartFlashing' method with Color.Black and Color.White as input.
+            If the value of 'flashcolor' variable is anything else, it throws an InvalidCommandException with the message "Invalid value for flashing!".
+            </summary>
+        </member>
+        <member name="T:Assignment1.CommandParser">
+            <summary>
+            CommandParser class helps us to parse one line of the commands entered by the user and take actions accordingly if user enters valid command else it shows the appropriate error message.
+            </summary>
+        </member>
+        <member name="M:Assignment1.CommandParser.#ctor(System.Drawing.Graphics)">
+            <summary>
+            It sets the default color of the pen to black and assigns object of Graphics class inside CommandParser class as the graphics object sent as parameter to this method.
+            </summary>
+            <param name="g"></param>
+        </member>
+        <member name="M:Assignment1.CommandParser.reset_all">
+            <summary>
+            It resets all the drawing attributes to default i.e. pen color black, cursor position at (0,0), fill turned off as well as clears the picturebox and all the declared variables
+            </summary>
+        </member>
+        <member name="M:Assignment1.CommandParser.split_commands(System.String)">
+            <summary>
+            It splits the single line command into command and their respective parameters if, it encounters one using a single white space and ',' as delemiters
+            </summary>
+            <param name="line"></param>
+            <returns>True if the entered commmand is valid else throws an exception</returns>
+            <exception cref="T:Assessment1.InvalidCommandException"></exception>
+        </member>
+        <member name="M:Assignment1.CommandParser.looping_commands">
+            <summary>
+            It is useful for executing while loop by using its indexes
+            </summary>
+        </member>
+        <member name="M:Assignment1.CommandParser.set_Commands(System.String[])">
+            <summary>
+            Setter method to set user entered commands from the command window
+            </summary>
+            <param name="cmds"></param>
+        </member>
+        <member name="M:Assignment1.CommandParser.get_Commands">
+            <summary>
+            Getter method to get the user entered commands
+            </summary>
+            <returns>a string type array containing user entered commands</returns>
+        </member>
+        <member name="M:Assignment1.CommandParser.set_while_count(System.Int32)">
+            <summary>
+            Sets count for while command
+            </summary>
+            <param name="count"></param>
+        </member>
+        <member name="M:Assignment1.CommandParser.get_while_count">
+            <summary>
+            gets count of while command
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Assignment1.DrawTo">
+            <summary>
+            DrawTo class inherits an abstract class named Shape
+            </summary>
+        </member>
+        <member name="M:Assignment1.DrawTo.#ctor">
+            <summary>
+            Default constructor of the DrawTo class calls the default constructor of it's base class i.e.
+            Shape
+            </summary>
+        </member>
+        <member name="M:Assignment1.DrawTo.set(System.Drawing.Color,System.String,System.Boolean,System.Boolean,System.Int32[])">
+            <summary>
+            It sets the cursor position, color of the pen and co-ordinates for the line to be drawn
+            </summary>
+            <param name="colour"></param>
+            <param name="flashcolor"></param>
+            <param name="fill"></param>
+            <param name="flash"></param>
+            <param name="list"></param>
+        </member>
+        <member name="M:Assignment1.DrawTo.draw(System.Drawing.Graphics)">
+            <summary>
+            This method is used to draw a line on the Graphics object passed as input.
+            It creates a Pen object with the specified 'colour' and width of 2.
+            If the 'flash' variable is true, it creates a new thread and starts it based on the value of 'flashcolor' variable.
+            The thread runs the 'StartFlashing' method and passes the Graphics object and two colors as input.
+            If the 'flashcolor' variable is "redgreen", the thread runs the 'StartFlashing' method with Color.Red and Color.Green as input.
+            If the 'flashcolor' variable is "blueyellow", the thread runs the 'StartFlashing' method with Color.Blue and Color.Yellow as input.
+            If the 'flashcolor' variable is "blackwhite", the thread runs the 'StartFlashing' method with Color.Black and Color.White as input.
+            If the value of 'flashcolor' variable is anything else, it throws an InvalidCommandException with the message "Invalid value for flashing!".
+            If 'flash' variable is false, it uses the Pen object to draw a line on the Graphics object with the coordinates specified by 'x', 'y', 'start_pt', and 'end_pt' variables.
+            After the line is drawn, it disposes of the Pen object.
+            </summary>
+        </member>
+        <member name="M:Assignment1.DrawTo.StartFlashing(System.Drawing.Graphics,System.Drawing.Color,System.Drawing.Color)">
+            <summary>
+            This method is used to flash a line on the Graphics object passed as input.
+            It takes two Color objects as input, which represent the two colors the line should alternate between.
+            It uses a while loop to continuously draw the line with one of the two colors and sleep for 500 milliseconds,
+            creating the flashing effect. A lock statement is used to ensure that the graphics object is only accessed by one thread at a time.
+            A flag variable is used to alternate between the two colors.
+            The method continues to run until the program is closed.
+            </summary>
+            <param name="g">Graphics object to draw on</param>
+            <param name="first">first color of the line</param>
+            <param name="second">second color of the line</param>
+        </member>
+        <member name="T:Assignment1.Form1">
+             <summary>
+            A partial class called Form1 that inherits from the Form class. The class has several private variables such as a Graphics object named g, a CommandParser object named cmd_prs, a boolean syntx_status, a SyntaxCheck object named synt_check, an array of strings named text, and a static list of strings named mth_cmd. It also has two integers named method_index and endMethod_index.
+             </summary>
+        </member>
+        <member name="M:Assignment1.Form1.#ctor">
+            <summary>
+            Default constructor to initialize all the components of the form also initializes object of Graphics class and CommandParser class is initialized by passing the same initialized graphics object
+            </summary>
+        </member>
+        <member name="M:Assignment1.Form1.get_g">
+            <summary>
+            Getter method which returns Object of graphics class that is initialized by the default constructor
+            </summary>
+            <returns>object of graphics class i.e g</returns>
+        </member>
+        <member name="M:Assignment1.Form1.btn_Run_Click(System.Object,System.EventArgs)">
+            <summary>
+            Creating a run button click event that splits the user entered commands based on their line and        sending each line of command to CommandParser classs
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Assignment1.Form1.get_Command">
+            <summary>
+            This method is used to get the text of the txt_Command_Window control as a StringReader object.
+            </summary>
+            <returns>
+            Returns a StringReader object containing the text of the txt_Command_Window control.
+            </returns>
+        </member>
+        <member name="M:Assignment1.Form1.get_text">
+            <summary>
+            This method is used to get the value of the text variable.
+            </summary>
+            <returns>
+            Returns the string array 'text'
+            </returns>
+        </member>
+        <member name="M:Assignment1.Form1.set_text">
+            <summary>
+            This method is used to set the value of the text variable by splitting the text of the txt_Command_Window control by newline characters.
+            </summary>
+        </member>
+        <member name="F:Assignment1.Form1.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Assignment1.Form1.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Assignment1.Form1.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Assignment1.If_Statement">
+            <summary>
+            This class checks syntax of single line as well as multiline if statement and returns true if correct syntax is encountered else returns false
+            </summary>
+        </member>
+        <member name="M:Assignment1.If_Statement.check_SingleLine_if(System.String)">
+            <summary>
+            It takes a single line of command as an arguement and checks validity of single line if statement
+            </summary>
+            <param name="line"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Assignment1.If_Statement.check_MultiLine_if(System.String[])">
+            <summary>
+            It takes a array string as an arguement and checks validity of single line if statement
+            </summary>
+            <param name="txt"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Assignment1.If_Statement.set_index(System.Int32)">
+            <summary>
+            This method is used to set the value of the private variable 'index'
+            </summary>
+            <param name="ind">The value to set the index to</param>
+        </member>
+        <member name="M:Assignment1.If_Statement.get_index">
+            <summary>
+            This method is used to get the value of the private variable 'index'
+            </summary>
+            <returns>The current value of the index</returns>
+        </member>
+        <member name="M:Assignment1.If_Statement.set_endif_index(System.Int32)">
+            <summary>
+            This method is used to set the value of the private variable 'end_index'
+            </summary>
+            <param name="ind">The value to set the end_index to</param>
+        </member>
+        <member name="M:Assignment1.If_Statement.get_endif_index">
+            <summary>
+            This method is used to get the value of the private variable 'end_index'
+            </summary>
+            <returns>The current value of the end_index</returns>
+        </member>
+        <member name="M:Assignment1.If_Statement.check_condition(System.String,System.Int32[])">
+            <summary>
+            Checks condition for the if statements
+            </summary>
+            <param name="condition"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Assignment1.If_Statement.get_condition_status">
+            <summary>
+            returns the condition check status for the if statements
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Assignment1.If_Statement.IfFound">
+            <summary>
+            Property to get or set the value of private boolean variable if_found.
+            </summary>
+        </member>
+        <member name="P:Assignment1.If_Statement.EndIfFound">
+            <summary>
+            Property to get or set the value of private boolean variable endif_found.
+            </summary>
+        </member>
+        <member name="T:Assignment1.Looping">
+            <summary>
+            This class is used for handling looping functionality in the program.
+            It contains private variables to keep track of the loop syntax, whether a while loop or end loop has been found,
+            the status of the looping condition, an instance of the Var class for evaluating expressions, the index and end_index of the loop,
+            and value1 and value2 for storing values needed for evaluating the loop condition.
+            </summary>
+        </member>
+        <member name="M:Assignment1.Looping.loop_check(System.String[])">
+            <summary>
+            This method is used for checking the syntax of the while loop and the endloop command in the given list of commands.
+            It checks for the presence of a valid while loop and endloop command, the presence and values of variables used in the loop condition,
+            and sets the index and end_index of the loop accordingly. It returns a boolean value indicating the status of the loop syntax.
+            </summary>
+            <param name="cmds">The list of commands to be checked for loop syntax</param>
+            <returns>Boolean value indicating the status of the loop syntax</returns>
+        </member>
+        <member name="M:Assignment1.Looping.check_condition(System.String,System.Int32[])">
+            <summary>
+            This method is used to check the condition of a while loop. The method takes in a string 'condition' that represents the comparison operator, and two integer values. The method checks if the condition is met by comparing the two values using the given operator. If the condition is met, the method sets the 'condition_status' variable to true, otherwise it sets it to false. It then returns the value of 'condition_status'.
+            </summary>
+            <param name="condition"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Assignment1.Methods">
+            <summary>
+            The class 'Methods' has several private variables such as a boolean noPara_check, a boolean method_found, a boolean endMethod_found, a static int method_index, a static int endmethod_index, a static Dictionary method and a boolean method_call. It also has a private list cmds
+            These variables are used to check for the method calls and handling them.
+            The method_index and endmethod_index are used to keep track of the start and end of the method.
+            The method_found and endMethod_found are used to check if a method and endMethod is found in the code.
+            The noPara_check is used to check if the method has no parameter.
+            The method_call is used to check if a method is called.
+            The method dictionary stores the methods with their name and commands.
+            The cmds list stores the commands of the method.
+            </summary>
+        </member>
+        <member name="M:Assignment1.Methods.noPara_method(System.String[])">
+            <summary>
+            This method checks if the method has no parameter.
+            It takes an array of strings 'commands' as input. It uses a while loop to iterate through the 'commands' array.
+            Inside the while loop it uses the 'Split' method to split the commands on the basis of space.
+            It checks if the first element after splitting is "method" and if the length of split_cmd is 2 and if the second element contains "()".
+            If these conditions are true, it sets the 'noPara_check' variable to true and the 'method_found' variable to true and sets the 'method_index' variable to the current index of the loop.
+            If these conditions are not true, it sets the 'noPara_check' variable to false and clears the 'cmds' list.
+            It also checks if the first element after splitting is "endmethod" and if the 'method_found' is true. If these conditions are true, it sets the 'endMethod_found' variable to true and the 'endmethod_index' variable to the current index of the loop.
+            If the 'method_found' and 'endMethod_found' are true, it breaks the loop.
+            If these conditions are not true, it sets the 'noPara_check' variable to false and clears the 'cmds' list.
+            Finally, if the 'method_found' or 'endMethod_found' is not true, it sets the 'noPara_check' variable to false and clears the 'cmds' list.
+            It returns the 'noPara_check' variable
+            </summary>
+            <param name="commands">Array of commands</param>
+            <returns>Return 'noPara_check' variable</returns>
+        </member>
+        <member name="M:Assignment1.Methods.get_cmds">
+            <summary>
+            This method is used to get the commands stored in the private list 'cmds' as an array of strings.
+            </summary>
+            <returns>
+            Returns an array of strings containing the commands stored in 'cmds'
+            </returns>
+        </member>
+        <member name="P:Assignment1.Methods.Method_index">
+            <summary>
+            This property is used to get and set the value of the private variable 'method_index'
+            </summary>
+        </member>
+        <member name="P:Assignment1.Methods.Endmethod_index">
+            <summary>
+            This property is used to get and set the value of the private variable 'method_index'
+            </summary>
+        </member>
+        <member name="M:Assignment1.Program.Main">
+            <summary>
+            The main entry point for the application.
+            </summary>
+        </member>
+        <member name="T:Assignment1.Rectangle">
+            <summary>
+            Rectangle class inherits shape which is an abstract class
+            </summary>
+        </member>
+        <member name="M:Assignment1.Rectangle.#ctor">
+            <summary>
+            Default constructor of the Rectangle class calls the default constructor of it's base class i.e.
+            Shape
+            </summary>
+        </member>
+        <member name="M:Assignment1.Rectangle.set(System.Drawing.Color,System.String,System.Boolean,System.Boolean,System.Int32[])">
+            <summary>
+            It sets pen color fill status and cursor position as well as height, width and flashcolor of the rectangle
+            </summary>
+            <param name="colour"></param>
+            <param name="flashcolor"></param>
+            <param name="fill"></param>
+            <param name="flash"></param>
+            <param name="list"></param>
+        </member>
+        <member name="M:Assignment1.Rectangle.draw(System.Drawing.Graphics)">
+            <summary>
+            It draws rectangle basedd on its fill status cursor mposition as well as height and width.
+            </summary>
+            <param name="g"></param>
+        </member>
+        <member name="T:Assignment1.Shape">
+            <summary>
+            Abstract class named Shape inherits the Shapes interface
+            </summary>
+        </member>
+        <member name="M:Assignment1.Shape.#ctor">
+            <summary>
+            Default constructor of Shape class initializes the colour as Black and sets the x,y co-ordinates for the cursor as (0,0)
+            </summary>
+        </member>
+        <member name="M:Assignment1.Shape.set(System.Drawing.Color,System.String,System.Boolean,System.Boolean,System.Int32[])">
+            <summary>
+            It sets the color, fill status and cursor position for the shape that is to be drawn
+            </summary>
+            <param name="colour"></param>
+            <param name="flashcolor"></param>
+            <param name="fill"></param>
+            <param name="flash"></param>
+            <param name="list"></param>
+        </member>
+        <member name="T:Assignment1.ShapeFactory">
+            <summary>
+            ShapeFactory class uses factory design pattern to return the Object of the requested shape
+            </summary>
+        </member>
+        <member name="M:Assignment1.ShapeFactory.getShape(System.String)">
+            <summary>
+            When we pass the name of the shape it returns the object of the corresponding shape.If shapes other than circle, rectangle, triangle is passes then it throws an exception
+            </summary>
+            <param name="shapeType"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Assignment1.Shapes">
+            <summary>
+            Shapes interface has decelaration of set method that receives the color, fill status and integer type array as parameters
+            </summary>
+        </member>
+        <member name="T:Assignment1.SyntaxCheck">
+            <summary>
+            Syntax Check class checks syntax of each and every commands
+            </summary>
+        </member>
+        <member name="M:Assignment1.SyntaxCheck.set_commands(System.String[])">
+            <summary>
+            Storing user input commands in an string array
+            </summary>
+            <param name="txt">String array that contains user input commands</param>
+        </member>
+        <member name="M:Assignment1.SyntaxCheck.check_Syntax(System.IO.StringReader)">
+            <summary>
+            It checks syntax of all the user input commands and stores error if encountered based on the line number and returns true if no error is encountered else returns false
+            </summary>
+            <param name="sr">Object of StringReader that contains all the user input commands from the command window so that we could perform syntax check of the commands one line at a time</param>
+            <returns></returns>
+        </member>
+        <member name="M:Assignment1.SyntaxCheck.set_ErrorMessage(System.String)">
+            <summary>
+            Method to set error messege each time and invalid or incomplete syntax is encountered
+            </summary>
+            <param name="error"></param>
+        </member>
+        <member name="M:Assignment1.SyntaxCheck.set_Syntax_status(System.Boolean)">
+            <summary>
+            This method is used to set the syntax status of a command or a block of commands. The input parameter is a boolean value, which indicates whether the syntax is correct or not. If the value passed is true, it means the syntax is correct and if the value passed is false, it means the syntax is incorrect. This method is typically used in a syntax checker class to keep track of the syntax status of the commands being processed.
+            </summary>
+            <param name="status"></param>
+        </member>
+        <member name="M:Assignment1.SyntaxCheck.set_initial_error_line(System.Int32)">
+            <summary>
+            This method sets the value of the private variable "initial_error_line" to the value passed as the parameter "count" only if the current value of "initial_error_line" is equal to 0. This method is used to store the line number of the first error encountered in a set of commands.
+            </summary>
+            <param name="count"></param>
+        </member>
+        <member name="T:Assignment1.Triangle">
+            <summary>
+            Triangle class inherits abstract class named Shape
+            </summary>
+        </member>
+        <member name="M:Assignment1.Triangle.set(System.Drawing.Color,System.String,System.Boolean,System.Boolean,System.Int32[])">
+            <summary>
+            It sets pen color fill status and cursor position as well as height and base of the triangle
+            </summary>
+            <param name="colour"></param>
+            <param name="flashcolor"></param>
+            <param name="fill"></param>
+            <param name="flash"></param>
+            <param name="list"></param>
+        </member>
+        <member name="M:Assignment1.Triangle.draw(System.Drawing.Graphics)">
+            <summary>
+            It draws triangle based on its fill status cursor position as well as its base and height
+            </summary>
+            <param name="g"></param>
+        </member>
+        <member name="P:Assignment1.Var.Instance">
+            <summary>
+            It returns a single object of Variable class if there are no any instance of the class else it returns previously created instance following threadsafe singleton design pattern
+            </summary>
+        </member>
+        <member name="M:Assignment1.Var.Clear_dict">
+            <summary>
+            Clears the value of the dictionary
+            </summary>
+        </member>
+        <member name="M:Assignment1.Var.Declare_var(System.String)">
+            <summary>
+            Takes a single line input and checks for variabe declaration and throws exception if any invalid syntax is encountered
+            </summary>
+            <param name="line"></param>
+            <exception cref="T:Assessment1.InvalidCommandException"></exception>
+        </member>
+        <member name="M:Assignment1.Var.Perform_Arithmetic_Operation(System.String,System.Int32,System.Int32)">
+            <summary>
+            Performs arithmetic operation basaed upon the passed command and value
+            </summary>
+            <param name="command"></param>
+            <param name="val1"></param>
+            <param name="val2"></param>
+            <returns>integer type value after performing the arithmetic operation</returns>
+            <exception cref="T:Assessment1.InvalidCommandException"></exception>
+        </member>
+        <member name="M:Assignment1.Var.get_variable_value(System.String)">
+            <summary>
+            Checks if the passed string is variable and if so it returns it value else throws an exception 
+            </summary>
+            <param name="variable_name"></param>
+            <returns>value of the variable from the dictionary if the passed variable is present in the dictionary</returns>
+            <exception cref="T:Assessment1.InvalidCommandException"></exception>
+        </member>
+        <member name="M:Assignment1.Var.Check_for_var(System.String)">
+            <summary>
+            It checks for the presence of variable within the dictionary
+            </summary>
+            <param name="variable_name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Assignment1.Var.Add_Update_var_val(System.Int32,System.String)">
+            <summary>
+            It either adds new key and value pair to the dictionary if there is no previous key present else it updtaes the existing key's value
+            </summary>
+            <param name="var_val"></param>
+            <param name="command"></param>
+        </member>
+        <member name="T:Assignment1.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Assignment1.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Assignment1.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="T:Assessment1.InvalidCommandException">
+            <summary>
+            invalid command exception inherits Exception class
+            </summary>
+        </member>
+        <member name="M:Assessment1.InvalidCommandException.#ctor(System.String)">
+            <summary>
+            invalid command exception 
+            </summary>
+            <param name="message">When this custom exception is raised a string type arguement describing 
+            the appropriate message is passed which then calls the base class default constructor passing the 
+            same string type arguement</param>
+        </member>
+    </members>
+</doc>

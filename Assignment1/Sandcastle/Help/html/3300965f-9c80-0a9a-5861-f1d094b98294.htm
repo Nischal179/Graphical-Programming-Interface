@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html ><html lang="en-US"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><link rel="shortcut icon" href="../icons/favicon.ico" /><link rel="stylesheet" href="../css/bulma.css" /><link rel="stylesheet" href="../css/font-awesome.min.css" /><link rel="stylesheet" href="../css/presentationStyle.css" /><link rel="stylesheet" href="../css/vs.min.css" /><script src="../scripts/jquery-3.5.1.min.js"></script><script src="../scripts/clipboard.min.js"></script><script src="../scripts/highlight.min.js"></script><script src="../scripts/presentationStyle.js"></script><title>Assignment1 Namespace</title><meta name="Title" content="Assignment1" /><meta name="Help.Id" content="N:Assignment1" /><meta name="Help.ContentType" content="Reference" /><meta name="container" content="Assignment1" /><meta name="guid" content="3300965f-9c80-0a9a-5861-f1d094b98294" /><meta name="tocFile" content="../toc/Root.xml" /></head><body><div class="fixedLayout"><div id="Header" class="fixedHeader"><div class="pageHeader level mb-0 py-2 px-4"><div id="TitleContainer" class="level-left"><div id="DocumentationTitle" class="level-item">A Sandcastle Documented Class Library</div></div><div id="LangFilterSearchContainer" class="level-right"><div class="level-item"><div class="dropdown is-hoverable"><div class="dropdown-trigger"><button class="button" aria-haspopup="true" aria-controls="dropdown-menu"><span id="CurrentLanguage"></span><span class="icon is-small"><i class="fa fa-angle-down" aria-hidden="true"></i></span></button></div><div class="dropdown-menu" role="menu"><div id="LanguageSelections" class="dropdown-content"><a class="dropdown-item languageFilterItem" data-languageId="cs">C#</a><a class="dropdown-item languageFilterItem" data-languageId="vb">VB</a><a class="dropdown-item languageFilterItem" data-languageId="cpp">C++</a><a class="dropdown-item languageFilterItem" data-languageId="fs">F#</a></div></div></div></div><div class="level-item"><form id="SearchForm" action="#" onsubmit="TransferToSearchPage(); return false;"><div class="field"><div class="control has-icons-left"><input id="SearchTerms" class="input" type="text" maxlength="200" placeholder="Search" /><span class="icon is-small is-left"><i class="fa fa-search"></i></span><button id="SearchButton" type="submit" class="is-hidden"></button></div></div></form></div></div></div></div><div class="fixedContent"><nav class="breadcrumb my-1 px-2 border-bottom" role="navigation"><ul id="TopicBreadcrumbs" /></nav><div class="columns pl-5 pr-5 fixedContent"><div id="ShowHideTOCColumn" class="column is-hidden-tablet"><a id="ShowHideTOC">Show/Hide TOC</a></div><div id="TOCColumn" class="column is-hidden-mobile"><nav class="toc"><ul id="TableOfContents" class="toc-menu" /></nav></div><div id="TopicContent" class="column content is-7"><h1>Assignment<wbr />1 Namespace</h1><div class="summary"> </div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>Classes</h2><div id="IDACASection"><table id="classList" class="table is-hoverable"><tr><td><a href="21d2b083-cd34-9d46-92f9-4e78f3dfc612.htm">CommandParser</a></td><td>
+            CommandParser class helps us to parse one line of the commands entered by the user and take actions accordingly if user enters valid command else it shows the appropriate error message.
+            </td></tr><tr><td><a href="a655faf2-ceb2-fc8a-8688-c900af43e0d7.htm">Form1</a></td><td>
+            A partial class called Form1 that inherits from the Form class. The class has several private variables such as a Graphics object named g, a CommandParser object named cmd_prs, a boolean syntx_status, a SyntaxCheck object named synt_check, an array of strings named text, and a static list of strings named mth_cmd. It also has two integers named method_index and endMethod_index.
+             </td></tr><tr><td><a href="8ad44952-998c-26d2-3dc6-4a582bdd1d7b.htm">If_Statement</a></td><td>
+            This class checks syntax of single line as well as multiline if statement and returns true if correct syntax is encountered else returns false
+            </td></tr><tr><td><a href="c2f415e9-5039-f37d-b805-8fcb4cb97c9a.htm">InvalidCommandException</a></td><td>
+            invalid command exception inherits Exception class
+            </td></tr><tr><td><a href="09ff86e8-4ae0-b544-fa55-7d93ec5e1cc4.htm">Looping</a></td><td>
+            This class is used for handling looping functionality in the program.
+            It contains private variables to keep track of the loop syntax, whether a while loop or end loop has been found,
+            the status of the looping condition, an instance of the Var class for evaluating expressions, the index and end_index of the loop,
+            and value1 and value2 for storing values needed for evaluating the loop condition.
+            </td></tr><tr><td><a href="89a99540-84ed-ef9d-38ff-079e3e3f01f4.htm">Methods</a></td><td>
+            The class 'Methods' has several private variables such as a boolean noPara_check, a boolean method_found, a boolean endMethod_found, a static int method_index, a static int endmethod_index, a static Dictionary method and a boolean method_call. It also has a private list cmds
+            These variables are used to check for the method calls and handling them.
+            The method_index and endmethod_index are used to keep track of the start and end of the method.
+            The method_found and endMethod_found are used to check if a method and endMethod is found in the code.
+            The noPara_check is used to check if the method has no parameter.
+            The method_call is used to check if a method is called.
+            The method dictionary stores the methods with their name and commands.
+            The cmds list stores the commands of the method.
+            </td></tr><tr><td><a href="68a5217b-f92a-1107-d6a8-bf8f9f1c3ef3.htm">SyntaxCheck</a></td><td>
+            Syntax Check class checks syntax of each and every commands
+            </td></tr><tr><td><a href="0e44897a-c272-9803-219a-77ecf41fb5c1.htm">Var</a></td><td>
+            /// The Var class is a singleton class that creates and manages variables in the program. 
+            It has methods for creating variables, getting the value of variables, and performing arithmetic operations on them. 
+            It follows the thread-safe singleton design pattern to ensure that only one instance of the class exists.
+            </td></tr></table></div></div><div id="InThisArticleColumn" class="column is-hidden-mobile"><nav class="menu sticky is-hidden"><p class="menu-label"><strong>In This Article</strong></p><ul id="InThisArticleMenu" class="menu-list"><li><a class="quickLink">Classes</a></li></ul></nav></div></div></div><footer id="PageFooter" class="footer border-top py-3 fixedFooter"><div class="columns"><div class="column"> 
+				</div><div class="column"> 
+				</div></div></footer></div><script>$(function(){
+SetDefaultLanguage("cs");
+LoadTocFile(null, null);
+InitializeQuickLinks();
+
+$(".toggleSection" ).click(function () {
+    SectionExpandCollapse(this);
+});
+
+$(".toggleSection").keypress(function () {
+    SectionExpandCollapseCheckKey(this, event)
+});
+});</script></body></html>
